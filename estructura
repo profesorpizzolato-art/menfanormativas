@@ -1,31 +1,28 @@
-menfa-normativas/
+MENFANormativas/
 │
-├── app.py                     # Aplicación principal
+├── app.py
+├── README.md
+├── requirements.txt
+├── .gitignore
 │
-├── paginas/                  # Páginas de la aplicación
+├── paginas/
 │   ├── inicio.py
 │   ├── biblioteca.py
-│   ├── normativa.py
 │   ├── favoritos.py
 │   └── administracion.py
 │
 ├── base_datos/
 │   ├── conexion.py
-│   ├── crear_bd.py
-│   └── menfa_normativas.db
+│   └── crear_bd.py
 │
 ├── modelos/
-│   ├── usuarios.py
-│   └── normativas.py
+│   ├── usuario.py
+│   └── normativa.py
 │
 ├── servicios/
 │   ├── autenticacion.py
 │   └── buscador.py
 │
-├── recursos/
-│   ├── imagenes/
-│   └── documentos/
-│
-├── requirements.txt
-├── README.md
-└── .gitignore
+└── recursos/
+├── imagenes/
+└── documentos/
