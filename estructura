@@ -1,24 +1,215 @@
-menfa-normativas/
-│
-├── interfaz/                    # Frontend
-│   ├── paginas/
-│   ├── componentes/
-│   ├── estilos/
-│   └── recursos/
-│
-├── servidor/                    # Backend
-│   ├── controladores/
-│   ├── modelos/
-│   ├── rutas/
-│   ├── intermediarios/
-│   └── servicios/
-│
-├── base_de_datos/
-│   ├── esquema.sql
-│   └── datos_iniciales.sql
-│
-├── documentacion/
-│
-├── README.md
-├── .gitignore
-└── docker-compose.yml
+# MENFANormativas - Estructura Funcional MVP 1.0
+
+## Objetivo General
+
+Desarrollar una primera versión funcional de MENFANormativas que permita a los usuarios acceder a contenido normativo aplicado a la industria petrolera, capacitarse y evaluar conocimientos de forma digital.
+
+---
+
+# MVP 1.0
+
+## 1. Gestión de Usuarios
+
+### Funcionalidades
+
+* Registro de usuarios.
+* Inicio de sesión.
+* Recuperación de contraseña.
+* Edición de perfil.
+* Gestión de roles.
+
+### Roles Iniciales
+
+#### Administrador
+
+* Gestiona usuarios.
+* Publica contenido.
+* Crea evaluaciones.
+* Visualiza estadísticas.
+
+#### Instructor
+
+* Publica material.
+* Gestiona evaluaciones.
+* Realiza seguimiento de alumnos.
+
+#### Alumno
+
+* Accede a contenidos.
+* Realiza evaluaciones.
+* Descarga certificados.
+
+---
+
+## 2. Biblioteca Normativa
+
+### Objetivo
+
+Centralizar contenido normativo organizado por categorías.
+
+### Funcionalidades
+
+* Listado de normativas.
+* Búsqueda por palabra clave.
+* Filtros por categoría.
+* Filtros por organismo.
+* Visualización detallada.
+
+### Estructura de cada normativa
+
+* Título.
+* Organismo emisor.
+* Categoría.
+* Objetivo.
+* Alcance.
+* Aplicación operativa.
+* Caso práctico.
+* Riesgos asociados.
+* Referencias.
+
+### Categorías Iniciales
+
+* Seguridad y Salud Ocupacional.
+* Producción y Operaciones.
+* Perforación y Control de Pozos.
+* Laboratorio Petrolero.
+* Medio Ambiente.
+* Recursos Humanos.
+* Calidad.
+* Legislación Argentina.
+* Sistemas de Gestión.
+
+---
+
+## 3. Módulo de Capacitación
+
+### Funcionalidades
+
+* Publicación de cursos.
+* Organización por módulos.
+* Visualización de contenidos.
+* Material descargable.
+* Seguimiento del progreso.
+
+### Contenido Soportado
+
+* PDF.
+* Videos.
+* Presentaciones.
+* Imágenes.
+* Documentos técnicos.
+
+---
+
+## 4. Evaluaciones
+
+### Funcionalidades
+
+* Exámenes de opción múltiple.
+* Banco de preguntas.
+* Corrección automática.
+* Calificación inmediata.
+* Historial de evaluaciones.
+
+### Parámetros
+
+* Puntaje mínimo aprobatorio.
+* Tiempo máximo.
+* Número de intentos.
+
+---
+
+## 5. Certificados Digitales
+
+### Funcionalidades
+
+* Emisión automática.
+* Descarga en PDF.
+* Código único de verificación.
+* Registro histórico.
+
+---
+
+## 6. Panel Administrativo
+
+### Funcionalidades
+
+### Usuarios
+
+* Alta.
+* Baja.
+* Modificación.
+* Asignación de roles.
+
+### Contenidos
+
+* Crear.
+* Editar.
+* Publicar.
+* Eliminar.
+
+### Estadísticas
+
+* Usuarios registrados.
+* Cursos activos.
+* Evaluaciones realizadas.
+* Certificados emitidos.
+
+---
+
+# Arquitectura Inicial
+
+## Frontend
+
+* Interfaz web responsiva.
+* Compatible con PC, tablet y teléfono móvil.
+
+## Backend
+
+* API REST.
+
+## Base de Datos
+
+### Tablas Principales
+
+* usuarios
+* roles
+* cursos
+* modulos
+* contenidos
+* normativas
+* evaluaciones
+* preguntas
+* respuestas
+* certificados
+
+---
+
+# Requisitos No Funcionales
+
+* Interfaz en español.
+* Diseño intuitivo.
+* Acceso seguro mediante autenticación.
+* Sistema escalable y modular.
+* Compatibilidad multiplataforma.
+
+---
+
+# Versión MVP 1.0 - Alcance
+
+El MVP 1.0 deberá permitir que un alumno:
+
+1. Se registre.
+2. Inicie sesión.
+3. Acceda a un curso.
+4. Consulte normativas.
+5. Realice evaluaciones.
+6. Obtenga un certificado.
+
+---
+
+# Estado
+
+Fase: Diseño Conceptual.
+Versión: 1.0
+Proyecto: MENFANormativas.
