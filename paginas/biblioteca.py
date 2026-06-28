@@ -1,14 +1,12 @@
 import streamlit as st
-from modelos.normativa import obtener_normativas
+from modelos.normativa import obtener_normativas, eliminar_normativa
 
 
 def mostrar():
 
     st.header("📖 Biblioteca Normativa")
 
-    busqueda = st.text_input(
-        "🔎 Buscar normativa"
-    )
+    busqueda = st.text_input("🔎 Buscar normativa")
 
     categoria = st.selectbox(
         "Categoría",
@@ -28,6 +26,9 @@ def mostrar():
 
     normativas = obtener_normativas()
 
+    # =========================
+    # FILTROS
+    # =========================
     if busqueda:
         normativas = [
             n for n in normativas
@@ -41,6 +42,9 @@ def mostrar():
             if n["categoria"] == categoria
         ]
 
+    # =========================
+    # MOSTRAR RESULTADOS
+    # =========================
     if normativas:
 
         for normativa in normativas:
@@ -49,32 +53,30 @@ def mostrar():
                 f"{normativa['codigo']} - {normativa['titulo']}"
             ):
 
-                st.write(
-                    f"**Organismo:** {normativa['organismo']}"
-                )
+                st.write(f"**ID:** {normativa['id']}")
+                st.write(f"**Organismo:** {normativa['organismo']}")
+                st.write(f"**Categoría:** {normativa['categoria']}")
+                st.write(f"**Objetivo:** {normativa['objetivo']}")
+                st.write(f"**Alcance:** {normativa['alcance']}")
+                st.write(f"**Aplicación Operativa:** {normativa['aplicacion']}")
+                st.write(f"**Última Actualización:** {normativa['fecha_actualizacion']}")
 
-                st.write(
-                    f"**Categoría:** {normativa['categoria']}"
-                )
+                # =========================
+                # ACCIONES
+                # =========================
+                col1, col2 = st.columns(2)
 
-                st.write(
-                    f"**Objetivo:** {normativa['objetivo']}"
-                )
+                with col1:
+                    if st.button(f"✏️ Editar {normativa['id']}", key=f"edit_{normativa['id']}"):
+                        st.session_state["editar_normativa_id"] = normativa["id"]
+                        st.switch_page("paginas/administracion.py")
 
-                st.write(
-                    f"**Alcance:** {normativa['alcance']}"
-                )
-
-                st.write(
-                    f"**Aplicación Operativa:** {normativa['aplicacion']}"
-                )
-
-                st.write(
-                    f"**Última Actualización:** {normativa['fecha_actualizacion']}"
-                )
+                with col2:
+                    if st.button(f"🗑️ Eliminar {normativa['id']}", key=f"del_{normativa['id']}"):
+                        eliminar_normativa(normativa["id"])
+                        st.success("Normativa eliminada")
+                        st.rerun()
 
     else:
 
-        st.warning(
-            "No se encontraron normativas."
-        )
+        st.warning("No se encontraron normativas.")
