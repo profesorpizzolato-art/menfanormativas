@@ -4,6 +4,7 @@ from paginas import inicio
 from paginas import biblioteca
 from paginas import favoritos
 from paginas import perfil
+from paginas import administracion
 
 st.set_page_config(
     page_title="MENFANormativas",
@@ -19,7 +20,8 @@ opcion = st.sidebar.radio(
         "Inicio",
         "Biblioteca",
         "Favoritos",
-        "Perfil"
+        "Perfil",
+        "Administración"
     ]
 )
 
@@ -34,6 +36,9 @@ elif opcion == "Favoritos":
 
 elif opcion == "Perfil":
     perfil.mostrar()
+
+elif opcion == "Administración":
+    administracion.mostrar()
 
 st.sidebar.markdown("---")
 st.sidebar.caption("Versión MVP 1.0")
