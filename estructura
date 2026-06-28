@@ -1,0 +1,24 @@
+menfa-normativas/
+│
+├── interfaz/                    # Frontend
+│   ├── paginas/
+│   ├── componentes/
+│   ├── estilos/
+│   └── recursos/
+│
+├── servidor/                    # Backend
+│   ├── controladores/
+│   ├── modelos/
+│   ├── rutas/
+│   ├── intermediarios/
+│   └── servicios/
+│
+├── base_de_datos/
+│   ├── esquema.sql
+│   └── datos_iniciales.sql
+│
+├── documentacion/
+│
+├── README.md
+├── .gitignore
+└── docker-compose.yml
