@@ -1,30 +1,81 @@
 import streamlit as st
+from modelos.normativa import obtener_normativas
+
 
 def mostrar():
 
+    normativas = obtener_normativas()
+    total = len(normativas)
+
     st.title("📚 MENFANormativas")
-    st.subheader(
-        "Normativas Aplicadas a la Industria del Petróleo y Gas"
-    )
+    st.subheader("Dashboard del Sistema Normativo")
 
     st.markdown("---")
 
-    st.markdown("""
-    ### Bienvenido
+    # =========================
+    # KPIs
+    # =========================
+    col1, col2, col3 = st.columns(3)
 
-    MENFANormativas es una plataforma destinada a la consulta,
-    interpretación y capacitación sobre normativas aplicables
-    a la industria petrolera.
+    with col1:
+        st.metric("📄 Normativas", total)
 
-    #### Funcionalidades:
+    with col2:
+        organismos = len(set(n["organismo"] for n in normativas)) if normativas else 0
+        st.metric("🏢 Organismos", organismos)
 
-    - Biblioteca normativa.
-    - Búsqueda inteligente.
-    - Fichas técnicas.
-    - Favoritos.
-    - Capacitaciones.
-    """)
+    with col3:
+        categorias = len(set(n["categoria"] for n in normativas)) if normativas else 0
+        st.metric("📂 Categorías", categorias)
 
-    st.info(
-        "Seleccione una opción desde el menú lateral."
+    st.markdown("---")
+
+    # =========================
+    # RESUMEN RÁPIDO
+    # =========================
+    st.subheader("📊 Resumen del Sistema")
+
+    if normativas:
+
+        ultimas = sorted(
+            normativas,
+            key=lambda x: x["id"],
+            reverse=True
+        )[:5]
+
+        for n in ultimas:
+
+            st.info(
+                f"📌 {n['codigo']} - {n['titulo']} | "
+                f"{n['organismo']} | {n['categoria']}"
+            )
+
+    else:
+        st.warning("No hay normativas cargadas aún.")
+
+    st.markdown("---")
+
+    # =========================
+    # DISTRIBUCIÓN POR CATEGORÍA
+    # =========================
+    st.subheader("📊 Distribución por Categoría")
+
+    if normativas:
+
+        conteo = {}
+
+        for n in normativas:
+            cat = n["categoria"]
+            conteo[cat] = conteo.get(cat, 0) + 1
+
+        for cat, cantidad in conteo.items():
+            st.write(f"**{cat}:** {cantidad}")
+
+    st.markdown("---")
+
+    # =========================
+    # MENSAJE FINAL
+    # =========================
+    st.success(
+        "MENFANormativas operativo - MVP 1.0 en desarrollo"
     )
