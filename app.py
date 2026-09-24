@@ -1,15 +1,15 @@
+```python
 import streamlit as st
 
 from base_datos.conexion import inicializar_base_datos
+
+inicializar_base_datos()
 
 from paginas import inicio
 from paginas import biblioteca
 from paginas import favoritos
 from paginas import perfil
 from paginas import administracion
-
-
-inicializar_base_datos()
 
 
 st.set_page_config(
@@ -51,3 +51,4 @@ elif opcion == "Administración":
 
 st.sidebar.markdown("---")
 st.sidebar.caption("MENFANormativas · Versión MVP 1.0")
+```
