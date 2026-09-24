@@ -3,22 +3,13 @@ import sqlite3
 from pathlib import Path
 
 
-# ============================================================
-# UBICACIÓN DE LA BASE DE DATOS
-# ============================================================
-
 BASE_DIR = Path(__file__).resolve().parent
 DB_PATH = BASE_DIR / "menfa_normativas.db"
 
 
-# ============================================================
-# CONEXIÓN
-# ============================================================
-
 def obtener_conexion():
-
     conexion = sqlite3.connect(
-        DB_PATH,
+        str(DB_PATH),
         check_same_thread=False
     )
 
@@ -27,12 +18,7 @@ def obtener_conexion():
     return conexion
 
 
-# ============================================================
-# INICIALIZACIÓN DE LA BASE
-# ============================================================
-
 def inicializar_base_datos():
-
     conexion = obtener_conexion()
     cursor = conexion.cursor()
 
