@@ -1,4 +1,3 @@
-```python
 import streamlit as st
 
 from base_datos.conexion import inicializar_base_datos
@@ -51,4 +50,4 @@ elif opcion == "Administración":
 
 st.sidebar.markdown("---")
 st.sidebar.caption("MENFANormativas · Versión MVP 1.0")
-```
+
